@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo apt install StarWarsIV
+telnet towel.blinkenlights.nl
