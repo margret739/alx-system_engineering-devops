@@ -1,0 +1,2 @@
+#!/bin/bash
+chmod u-rx hello  chmod g-rx hello  chmod 0+w hello
