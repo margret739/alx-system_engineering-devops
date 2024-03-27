@@ -4,18 +4,15 @@
 #updates the package list for available software packages
 apt-get update
 #installs the Nginx web server
-apt-get inastall -y nginx
+apt-get install -y nginx
 
-#a directory which will serve as the document root directory
-for Nginx
+#a directory which will serve as the document root directory for Nginx
 mkdir /etc/nginx/html
 # creates an empty index.html file
 touch /etc/nginx/html/index.html
-# sets the content of the index.html file to "Hello World!" using
-echo command.
-echo "Hello World!">/etc/nginx/html/index.html
-# sets Nginx to listen on port 80 and serve files from /etc/nginx/html
-directory
+# sets the content of the index.html file to "Hello World!" using echo command.
+echo "Hello World!"> /etc/nginx/html/index.html
+# sets Nginx to listen on port 80 and serve files from /etc/nginx/html directory
 printf%s"server{
 	listen 80;
 	listen [::]:80 default_server;
