@@ -14,7 +14,7 @@ if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/"
 
     employee_id = sys.argv[1]
-    
+
     user_response = requests.get(url + "users/{}".format(employee_id))
 
     user = user_response.json()
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     todos_response = requests.get(url + "todos", params=params)
 
     todos = todos_response.json()
-    
+
     completed = []
 
     for todo in todos:
@@ -36,4 +36,3 @@ if __name__ == "__main__":
 
     for complete in completed:
         print("/t {}".format(complete))
-
