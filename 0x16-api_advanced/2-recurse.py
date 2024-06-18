@@ -5,7 +5,12 @@ import requests
 
 
 def recurse(subreddit, hot_list=[]):
-    """ retrieves a list of titles of all hot posts"""
+    """ retrieves a list of titles of all hot posts
+    subreddit (str): name of subreddit
+    hot_list (list, optional): list to store pot titles.
+    after (str, optional): used for pagination.
+    count (int, optiona): current count of retrieved posts"""
+
     # construct the URL for the subreddit in JSON
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
 
@@ -16,10 +21,10 @@ def recurse(subreddit, hot_list=[]):
 
     # parameters for the request
     params = {
-            "after": after,
-            "count": count,
-            "limit": 100
-            }
+                "after": after,
+                "count": count,
+                "limit": 100
+                }
 
     # a GET request to the subreddits
     response = requests.get(url, headers=headers, params=params,
