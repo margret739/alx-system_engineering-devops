@@ -4,7 +4,7 @@
 import requests
 
 
-def recurse(subreddit, hot_list=[]):
+def recurse(subreddit, hot_list=[], after="", count=0):
     """ retrieves a list of titles of all hot posts
     subreddit (str): name of subreddit
     hot_list (list, optional): list to store pot titles.
