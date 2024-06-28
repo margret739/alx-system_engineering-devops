@@ -49,8 +49,12 @@ echo "$server_config" | sudo dd status=none of=/etc/haproxy/haproxy.cfg
 # init script started by haproxy enabled
 echo "ENABLED=1" | sudo dd status=none of=/etc/default/haproxy
 
+echo "configured - Roundrobin On web-01 & web-02"
+
 if [ "$(pgrep -c haproxy)" -le 0 ]; then
 	sudo service haproxy start
 else
 	sudo service haproxy restart
 fi
+
+echo -e "web-01 web-02"
