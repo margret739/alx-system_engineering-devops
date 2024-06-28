@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Setup a new ubuntu server with nginx
 # and it adds a custom HTTP Header
 
