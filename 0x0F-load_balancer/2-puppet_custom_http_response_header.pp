@@ -1,11 +1,11 @@
 # Setup a new ubuntu server with nginx
 # and it adds a custom HTTP Header
 
-exec { 'update system':
+exec {'update system':
 	command => '/usr/bin/apt-get update',
 }
 
-package { 'nginx':
+package {'nginx':
 	ensure => 'installed',
 	require => Exec['update system']
 }
