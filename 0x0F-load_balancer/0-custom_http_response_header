@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # duplicate web-01 to web-02
 # scripts upgrade from the web-server
+
 # uncomment for the scree to run
 #set -x
 
