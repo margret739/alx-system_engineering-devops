@@ -10,7 +10,8 @@ function install() {
 	#shellcheck disable=SC2181
 	if [ $? -ne 0 ]; then
 		echo -e "	Installing: $1\n"
-		sudo apt-get update -y -qq && \ sudo apt-get install -y "$1" -qq
+		sudo apt-get update -y -qq && \
+			sudo apt-get install -y "$1" -qq
 		echo -e "\n"
 	else
 		echo -e "       ${1} is already installed.\n"
@@ -49,12 +50,8 @@ echo "$server_config" | sudo dd status=none of=/etc/haproxy/haproxy.cfg
 # init script started by haproxy enabled
 echo "ENABLED=1" | sudo dd status=none of=/etc/default/haproxy
 
-echo "configured - Roundrobin On web-01 & web-02"
-
 if [ "$(pgrep -c haproxy)" -le 0 ]; then
 	sudo service haproxy start
 else
 	sudo service haproxy restart
 fi
-
-echo -e "web-01 web-02"
