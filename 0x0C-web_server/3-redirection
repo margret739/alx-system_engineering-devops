@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # configures a new ubuntu machine
-#Nginx where it should be listening on port 80
+# Nginx where it should be listening on port 80
 # a ppage that would return a Hello World string
 
 echo -e "updating and installing Nginx.\n"
@@ -23,7 +23,7 @@ sudo chmod -R 755 /var/www
 c /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.backp
 
 #creating new index
-echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
+echo -e "Hello World!" > /var/www/html/index.html
 
 # Restarting nginx
 sudo service nginx restart
