@@ -1,39 +1,25 @@
-#!/usr/bin/env bash
 #defines a puppet class called nginx_server
-#it encapsulates the config for nginx server
+# it encapsulates the config for nginx server
 
-class nginx_server {
- package {'nginx':
-  ensure => installed,
+exec { 'update system':
+	command => '/usr/bin/apt-get update',
 }
 
-#manage the nginx service
-service {'nginx':
- ensure => running,
- enable => true,
- require => package['nginx'],
+package { 'nginx':
+	ensure => 'installed',
+	require => Exec['update system']
 }
-# manage the nginx xonfiguration file located at /etc/nginx/
-# sites-available/default.
-file {'/etc/nginx/sites-available/default':
- ensure => present,
- content => "
-  server {
-   listen  80 default_server;
-   listen  [::]:80 default_server;
-   root    /var/www/html;
-   index    index.html index.htm;
 
-   location /{
-    return 200 'Hello World!';
+file { '/var/www/html/index.html':
+	content => 'Hello World!'
 }
-   location /redirect_me {
-    return 301 http://cuberule.com/;
+
+exec { 'redirect_me':
+	command => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUIwu4 permanent;" /etc/nginx/sites-available/default',
+	provider => 'shell'
 }
+
+service { 'nginx':
+	ensure => running,
+	require => Package['nginx']
 }
-",
-notify => Service['nginx'],
-}
-}
-# includes the nginx_server class, ensuring that it gets applied.
-include nginx_server
