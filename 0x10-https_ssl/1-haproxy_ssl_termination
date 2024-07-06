@@ -41,11 +41,11 @@ frontend malyn-frontend
 	default_backend malyn-backend
 
 frontend malyn-frontend-https
-	bind *:443 ssl crt /etc/haproxy/certs/malyn.tech.pem
+	bind *:443 ssl crt /etc/haproxy/certs/www.malyn.tech.pem
 	http-request set-header X-Forwarded-Proto https
 	default_backend malyn-backend
 
 backend malyn-backend
 	balance roundrobin
-	server 315086-web-01 35.153.18.252 check
-	server 315086-web-02 54.237.54.88 check
+	server 315086-web-01 35.153.18.252:80 check
+	server 315086-web-02 54.237.54.88:80 check
